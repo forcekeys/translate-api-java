@@ -16,29 +16,46 @@ package com.forcekeys.translateapi;
 public class Language {
     private final String code;
     private final String name;
+    private final String nativeName;
     private final String flag;
+    private final boolean supportsFormality;
     
     /**
      * Constructor
      * 
      * @param code Language code (e.g., "en", "fr", "es")
      * @param name Language name (e.g., "English", "French", "Spanish")
+     * @param nativeName Native language name (e.g., "English", "Français", "Español")
      * @param flag Language flag emoji (e.g., "🇺🇸", "🇫🇷", "🇪🇸")
+     * @param supportsFormality Whether the language supports formality levels
      */
-    public Language(String code, String name, String flag) {
+    public Language(String code, String name, String nativeName, String flag, boolean supportsFormality) {
         this.code = code;
         this.name = name;
+        this.nativeName = nativeName;
         this.flag = flag;
+        this.supportsFormality = supportsFormality;
     }
     
     /**
-     * Constructor without flag
+     * Constructor with minimal parameters
+     * 
+     * @param code Language code
+     * @param name Language name
+     * @param nativeName Native language name
+     */
+    public Language(String code, String name, String nativeName) {
+        this(code, name, nativeName, "", false);
+    }
+    
+    /**
+     * Constructor without native name
      * 
      * @param code Language code
      * @param name Language name
      */
     public Language(String code, String name) {
-        this(code, name, "");
+        this(code, name, name, "", false);
     }
     
     /**
@@ -60,6 +77,15 @@ public class Language {
     }
     
     /**
+     * Get native language name
+     * 
+     * @return Language name in its native script
+     */
+    public String getNativeName() {
+        return nativeName;
+    }
+    
+    /**
      * Get language flag
      * 
      * @return Flag emoji for the language
@@ -75,6 +101,15 @@ public class Language {
      */
     public boolean hasFlag() {
         return flag != null && !flag.trim().isEmpty();
+    }
+    
+    /**
+     * Check if language supports formality levels
+     * 
+     * @return True if language supports formal/informal translation
+     */
+    public boolean supportsFormality() {
+        return supportsFormality;
     }
     
     /**
@@ -270,7 +305,9 @@ public class Language {
         return "Language{" +
                "code='" + code + '\'' +
                ", name='" + name + '\'' +
+               ", nativeName='" + nativeName + '\'' +
                ", flag='" + flag + '\'' +
+               ", supportsFormality=" + supportsFormality +
                '}';
     }
     
@@ -281,8 +318,10 @@ public class Language {
         
         Language language = (Language) o;
         
+        if (supportsFormality != language.supportsFormality) return false;
         if (code != null ? !code.equals(language.code) : language.code != null) return false;
         if (name != null ? !name.equals(language.name) : language.name != null) return false;
+        if (nativeName != null ? !nativeName.equals(language.nativeName) : language.nativeName != null) return false;
         return flag != null ? flag.equals(language.flag) : language.flag == null;
     }
     
@@ -290,7 +329,9 @@ public class Language {
     public int hashCode() {
         int result = code != null ? code.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (nativeName != null ? nativeName.hashCode() : 0);
         result = 31 * result + (flag != null ? flag.hashCode() : 0);
+        result = 31 * result + (supportsFormality ? 1 : 0);
         return result;
     }
 }
