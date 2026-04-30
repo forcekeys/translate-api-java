@@ -24,7 +24,7 @@ public class TranslateAPI {
     private final String baseUrl;
     private final HttpClient httpClient;
     
-    private static final String DEFAULT_BASE_URL = "https://api.translate.forcekeys.com/api/v1";
+    private static final String DEFAULT_BASE_URL = "https://api.deeptranslate.online/api/v1";
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(30);
     
     /**

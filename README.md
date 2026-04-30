@@ -3,7 +3,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.forcekeys/translate-api.svg)](https://search.maven.org/artifact/com.forcekeys/translate-api)
 [![Java Version](https://img.shields.io/badge/Java-8%2B-blue.svg)](https://www.oracle.com/java/technologies/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Documentation](https://img.shields.io/badge/docs-forcekeys.com-blue.svg)](https://translate.forcekeys.com/docs)
+[![Documentation](https://img.shields.io/badge/docs-deeptranslate.online-blue.svg)](https://deeptranslate.online/docs)
 
 Official Java client library for the TranslateAPI translation service. Translate text, documents, and images between 70+ languages with a simple, intuitive interface.
 
@@ -51,7 +51,7 @@ mvn install
 
 ### 1. Get Your API Key
 
-First, sign up at [translate.forcekeys.com](https://translate.forcekeys.com) to get your free API key.
+First, sign up at [deeptranslate.online](https://deeptranslate.online) to get your free API key.
 
 ### 2. Basic Usage
 
@@ -262,7 +262,7 @@ HttpClient httpClient = HttpClient.newBuilder()
 
 TranslateAPI api = new TranslateAPI.Builder("your_api_key")
     .httpClient(httpClient)
-    .baseUrl("https://api.translate.forcekeys.com/api/v1")
+    .baseUrl("https://api.deeptranslate.online/api/v1")
     .timeout(Duration.ofSeconds(30))
     .retries(3)
     .build();
@@ -324,7 +324,7 @@ future.join();
 ```java
 // Builder pattern
 TranslateAPI api = new TranslateAPI.Builder(apiKey)
-    .baseUrl("https://api.translate.forcekeys.com/api/v1")
+    .baseUrl("https://api.deeptranslate.online/api/v1")
     .timeout(Duration.ofSeconds(30))
     .retries(3)
     .build();
@@ -473,7 +473,7 @@ public class TranslateConfig {
     @Bean
     public TranslateAPI translateAPI() {
         return new TranslateAPI.Builder(System.getenv("FORCEKEYS_API_KEY"))
-            .baseUrl("https://api.translate.forcekeys.com/api/v1")
+            .baseUrl("https://api.deeptranslate.online/api/v1")
             .build();
     }
 }
@@ -507,9 +507,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Support
 
-- **Documentation**: [translate.forcekeys.com/docs](https://translate.forcekeys.com/docs)
+- **Documentation**: [deeptranslate.online/docs](https://deeptranslate.online/docs)
 - **Issues**: [GitHub Issues](https://github.com/forcekeys/translate-api-java/issues)
-- **Email**: support@forcekeys.com
+- **Email**: support@deeptranslate.online
 - **Discord**: [Join our Discord](https://discord.gg/forcekeys)
 
 ## License
